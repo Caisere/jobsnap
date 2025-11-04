@@ -28,10 +28,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className="max-w-6xl py-2 m-auto">
+        <div className="max-w-5xl py-2 m-auto">
             <NavBar/>
         </div>
-        <main>
+        <main className="min-h-screen">
             {children}
         </main>
       </body>
