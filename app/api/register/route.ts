@@ -2,6 +2,8 @@
 
 import prisma from "@/lib/prisma";
 import { NextRequest } from "next/server";
+import {hash} from 'bcrypt'
+import { hashPassword } from "@/lib/helper";
 
 export async function POST(req:NextRequest) {
     const {email, password, name} = await req.json()
@@ -16,12 +18,13 @@ export async function POST(req:NextRequest) {
     }
 
     // if no existing user
-    // hash password using either bcrypt or argon
+    // hash password
+    const hashedPassword = await hashPassword(password)
     await prisma.user.create({
         data: {
             email,
             name,
-            // password
+            password: hashedPassword
         }
     })
 
