@@ -14,27 +14,25 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import Link from "next/link";
+import type { SignupData } from "@/app/signup/page";
 
-const SignUpSchema = z.object({
-    name: z.string("Name is required"),
+const SignInSchema = z.object({
     email: z.email("Provide a valid email-address"),
     password: z.string("Password is required"),
 });
 
-export type SignupData = z.infer<typeof SignUpSchema>;
+type SignInData = Omit<SignupData, 'name'>
 
-function SignUpPage() {
-    const form = useForm<SignupData>({
-        resolver: zodResolver(SignUpSchema),
+function SignInForm() {
+    const form = useForm<SignInData>({
+        resolver: zodResolver(SignInSchema),
         defaultValues: {
-            name: '',
             email: '',
             password: ''
         }
     });
 
-    function onSubmit(data:SignupData) {
+    function onSubmit(data:SignInData) {
         try{
             const response = fetch('')
         } catch {
@@ -43,22 +41,9 @@ function SignUpPage() {
     }
 
     return (
-        <div className="">
+        <div className="w-full">
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col max-w-sm mx-auto justify-center gap-3 h-screen">
-                    <FormField
-                        control={form.control}
-                        name="name"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>Full Name</FormLabel>
-                                <FormControl>
-                                    <Input placeholder="Joe Doe" type="text" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
+                <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col mx-auto gap-3 w-[50%]">
                     <FormField
                         control={form.control}
                         name="email"
@@ -85,15 +70,11 @@ function SignUpPage() {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit">Submit</Button>
+                    <Button className="bg-blue-600 hover:bg-blue-700 transition-colors duration-300" type="submit">Submit</Button>
                 </form>
-                <div className="flex gap-1 items-center text-sm text-stone-400">
-                    <p>Already have an account?</p>
-                    <Link className="hover:underline font-semibold" href='/signin'>Login</Link>
-                </div>
             </Form>
         </div>
     );
 }
 
-export default SignUpPage;
+export default SignInForm;

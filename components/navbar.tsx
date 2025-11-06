@@ -28,13 +28,13 @@ async function NavBar() {
     // const session = await auth()
     
     return (
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between py-4">
             <div>
-                <Link href='/'>JobSnap</Link>
+                <Link className="font-bold text-xl text-stone-950" href='/'>JobSnap</Link>
             </div>
-            <nav className="flex items-center justify-end flex-1 gap-3">
+            <nav className="flex items-center justify-end flex-1 gap-4">
                 {navObj.map(nav => (
-                    <Link href={nav.link} key={nav.link}>
+                    <Link className="text-stone-900" href={nav.link} key={nav.link}>
                         {nav.name}
                     </Link>
                 ))}
