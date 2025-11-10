@@ -1,11 +1,15 @@
 import { findJob } from "@/lib/data-services";
 import Link from "next/link";
 import {formatDistanceToNow} from 'date-fns'
+import { ApplyButton } from "@/components/apply-button";
+import { auth } from "@/lib/auth";
+import { LogIn } from "lucide-react";
 
 async function Job ({params}: {params: Promise<{id: string}>}) {
     const jobId = (await params).id
-    
     const job = await findJob({jobId})
+
+    const session = await auth()
 
     return (
         <div className="max-w-4xl mx-auto">
@@ -47,10 +51,19 @@ async function Job ({params}: {params: Promise<{id: string}>}) {
                         {job?.description}
                     </div>
                 </div>
-        
-                <div className="mt-8 pt-8 border-t border-gray-200">
-                {/* <ApplyButton jobId={job.id} /> */}
-                </div>
+
+                {session?.user ? 
+                    (
+                        <div className="mt-8 pt-8 border-t border-gray-200">
+                            <ApplyButton jobId={jobId} />
+                        </div>
+                    ) : (
+                        <div className="mt-8 pt-8 border-t border-gray-200 flex items-center justify-between">
+                            <p>Login to apply for this Job</p>
+                            <Link className="bg-black text-stone-50 p-2 rounded flex gap-1 items-center" href='/signin'><span>Continue to Login</span> <span><LogIn width={16}/></span></Link>
+                        </div>
+                    )
+                }
             </div>
         </div>
     );
