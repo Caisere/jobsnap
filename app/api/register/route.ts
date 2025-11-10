@@ -7,7 +7,7 @@ import { hashPassword } from "@/lib/helper";
 export async function POST(req:NextRequest) {
     const {email, password, name} = await req.json()
 
-    // check if user already exit in the database
+    // // check if user already exit in the database
     const existingUser = await prisma.user.findUnique({
         where: {email: email}
     })

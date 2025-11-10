@@ -10,11 +10,11 @@ generator client {
     runtime  = "vercel-edge"
 }
 
-generator client_node {
-    provider = "prisma-client"
-    output   = "../app/generated/prisma-node"
-    runtime  = "nodejs"
-}
+// generator client_node {
+//     provider = "prisma-client"
+//     output   = "../app/generated/prisma-node"
+//     runtime  = "nodejs"
+// }
 
 datasource db {
     provider = "postgresql"
