@@ -78,7 +78,7 @@ async function BrowseJobsPage({searchParams}:{searchParams: Promise<{[key: strin
                                 Posted by {job.postedBy.name}
                             </span>
                             <Link
-                                href={`/jobs/${job.id}`}
+                                href={`/browsejobs/${job.id}`}
                                 className="text-indigo-600 hover:text-indigo-700 font-medium"
                             >
                                 View Details →
