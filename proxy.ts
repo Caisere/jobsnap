@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from "next/server"
 const protectedRoutes = [
     '/dashboard',
     '/profile',
-    '/browsejobs',
+    // '/browsejobs',
     '/postjob',
 ]
 
@@ -29,7 +29,7 @@ export const config = {
     matcher: [
         '/dashboard/:path*',
         '/profile/:path*',
-        '/browsejobs/:path*',
+        // '/browsejobs/:path*',
         '/postjob/:path*',
     ]
 }
