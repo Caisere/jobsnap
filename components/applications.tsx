@@ -11,6 +11,9 @@ async function Application () {
         where: {
             userId: sesssion?.user?.id
         },
+        orderBy: {
+            appliedAT: 'desc'
+        },
         include: {
             job: true
         }
@@ -64,8 +67,7 @@ async function Application () {
                             </div>
                             <div className="mt-4 flex justify-end">
                                 <Link
-                                    href={``}
-                                    // /job/${application.job.id}
+                                    href={`/browsejobs/${application.job.id}`}
                                     className="text-indigo-600 hover:text-indigo-700 text-sm font-medium"
                                 >
                                     View Job

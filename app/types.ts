@@ -15,3 +15,9 @@ export type FindJobs = {
     searchType: string | undefined, 
     searchLocation: string | undefined 
 }
+
+
+export type JobApplicationResponse = {
+    message: string;
+    status: number
+};

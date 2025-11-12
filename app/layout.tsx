@@ -31,7 +31,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen`}
       >
         <SessionProvider>
-            <div className="bg-stone-100">
+            <div className="bg-stone-100 relative">
                 <NavBar/>
             </div>
             <main className="">

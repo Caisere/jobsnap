@@ -5,6 +5,8 @@ import { Button } from "./ui/button";
 import {useSession} from 'next-auth/react'
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { Spinner } from "./ui/spinner";
+import { JobApplicationResponse } from "@/app/types";
 
 export function ApplyButton({jobId}:{jobId:string}) {
     const [isApplying, setIsApplying] = useState<boolean>(false)
@@ -29,13 +31,18 @@ export function ApplyButton({jobId}:{jobId:string}) {
             const response = await fetch(`/api/jobs/${jobId}/apply`, {
                 method: 'POST'
             })
+            // get the JSON response returned from the route
+            const data:JobApplicationResponse = await response.json();
 
-            if(!response.ok) {
-                toast('Error while applying for job')
+            if (!response.ok) {
+                // if the server responded with an error (either status 400 or 500)
+                toast(data.message || "Something went wrong!");
+                return;
             }
 
-            toast('Job Application Successful')
-            return
+            // Success
+            toast(data.message || "Job Application Successful!");
+            
         } catch(error) {
             if (error instanceof Error) {
                 toast(error.message);
@@ -52,7 +59,7 @@ export function ApplyButton({jobId}:{jobId:string}) {
     return (
         <div>
             <Button disabled={isApplying} onClick={handleJobApplication}>
-                Apply for this position
+                {isApplying ? <Spinner /> : "Apply for this position"}
             </Button>
         </div>
     )

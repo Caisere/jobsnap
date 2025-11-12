@@ -15,7 +15,7 @@ async function BrowseJobsPage({searchParams}:{searchParams: Promise<{[key: strin
 
 
     return (
-        <div className="space-y-8">
+        <div className="space-y-8 mt-16">
             <div className="bg-white p-6 rounded-lg shadow-sm">
                 <div className="max-w-7xl mx-auto w-full pb-4">
 

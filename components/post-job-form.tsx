@@ -1,13 +1,12 @@
-'use client'
+import { handlePostJob } from "@/lib/actions"
+import FormButton from "./form-button"
 
-import { handlePostJob } from "@/lib/actions";
-import { useActionState } from "react";
 
 function PostJobForm() {
-    const [state, formAction, isPending] = useActionState(handlePostJob, null)
+    
 
     return (
-        <form className="flex flex-col gap-2" action={formAction}>
+        <form className="flex flex-col gap-2" action={handlePostJob}>
             <div>
                 <label
                     htmlFor="title"
@@ -18,6 +17,7 @@ function PostJobForm() {
                 <input
                     type="text"
                     name="title"
+                    autoComplete="true"
                     id="title"
                     required
                     className="mt-1 block w-full border border-gray-300 rounded-md px-4 py-2 focus:border-none focus:outline-none focus:ring-2 focus:ring-neutral-500 text-gray-900"
@@ -109,14 +109,8 @@ function PostJobForm() {
                     className="mt-1 block w-full border border-gray-300 rounded-md px-4 py-2 focus:border-none focus:outline-none focus:ring-2 focus:ring-neutral-500 text-gray-900"
                 />
             </div>
-    
-            <button
-            disabled={isPending}
-                type="submit"
-                className="w-full bg-neutral-600 mt-4 text-white px-4 py-2 rounded-md hover:bg-neutral-700 disabled:opacity-50 transition-colors duration-300 disabled:cursor-not-allowed"
-            >
-                Post Job
-            </button>
+
+            <FormButton label="Post Job" />
         </form>
     )
 }

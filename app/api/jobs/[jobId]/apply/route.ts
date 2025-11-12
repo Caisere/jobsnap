@@ -25,9 +25,10 @@ export async function POST(request: Request, {params}:{params: Promise<{jobId: s
 
         // if no job in db return error
         if(!job) {
-            return new NextResponse("The job you're applying to is not found. Might have been removed or deleted by the author. Try applying to another job!", {
-                status: 400
-            })
+            return NextResponse.json(
+                {message: "The job you're applying to is not found. Might have been removed or deleted by the author. Try applying to another job!",},
+                {status: 400}
+            )
         }
 
         // check if current user already applied to the same job 
@@ -40,13 +41,13 @@ export async function POST(request: Request, {params}:{params: Promise<{jobId: s
 
         // if application already exist, return error
         if(existingApplication) {
-            return new NextResponse('You already have applied for this job', {
-                status: 400
-            })
+            return NextResponse.json(
+                {message: "You have already apply for this job"},
+                {status: 400})
         }
 
         // if no application, apply to job 
-        const application = await prisma.application.create({
+        await prisma.application.create({
             data: {
                 userId: session.user.id,
                 jobId: jobId
@@ -54,7 +55,10 @@ export async function POST(request: Request, {params}:{params: Promise<{jobId: s
         })
 
         // return application
-        return NextResponse.json(application)
+        return NextResponse.json(
+            {message: 'Job Application Successful'},
+            {status: 201}
+        )
     } catch {
         return new NextResponse('Internal server error', {status: 500})
     }

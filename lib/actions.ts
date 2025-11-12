@@ -16,6 +16,6 @@ export async function HandleSignOut() {
 }
 
 
-export async function handlePostJob(prevState, formData) {
+export async function handlePostJob(formData:FormData) {
     console.log(formData)
 }
