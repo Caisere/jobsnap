@@ -70,7 +70,7 @@ function SignInForm() {
                             </FormItem>
                         )}
                     />
-                    <Button className="bg-blue-600 hover:bg-blue-700 transition-colors duration-300" type="submit">Submit</Button>
+                    <Button className="bg-neutral-700 text-white p-2 px-6 py-3 rounded-md text-lg font-medium hover:bg-neutral-800 transition-colors duration-300" type="submit">Submit</Button>
                 </form>
             </Form>
         </div>

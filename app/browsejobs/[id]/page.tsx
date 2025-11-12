@@ -19,12 +19,12 @@ async function Job ({params}: {params: Promise<{id: string}>}) {
 
 
     return (
-        <div className="max-w-4xl mx-auto mt-24">
-            <div className="bg-white rounded-lg shadow-sm p-8">
+        <div className="w-full bg-stone-100 h-screen flex justify-center items-center">
+            <div className="bg-white rounded-lg shadow-sm p-8 max-w-4xl mx-auto">
                 <div className="mb-8">
                     <Link
                         href="/browsejobs"
-                        className="text-indigo-600 hover:text-indigo-700 font-medium mb-4 inline-block"
+                        className="text-[#7DA7BA] hover:text-[#7DA7BA]/70 transition-color duration-300 ease-linear font-medium mb-4 inline-block"
                     >
                         ← Back to Jobs
                     </Link>

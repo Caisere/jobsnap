@@ -83,7 +83,7 @@ async function BrowseJobsPage({searchParams}:{searchParams: Promise<{[key: strin
                             </span>
                             <Link
                                 href={`/browsejobs/${job.id}`}
-                                className="text-indigo-600 hover:text-indigo-700 font-medium"
+                                className="text-[#7DA7BA] hover:text-[#7DA7BA]/70 transition-color duration-300 ease-linear font-medium"
                             >
                                 View Details →
                             </Link>
