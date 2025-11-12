@@ -22,7 +22,7 @@ async function RecentJobs () {
                     <p className="text-gray-600 mb-4 line-clamp-2">{job.description}</p>
                     <Link
                         href={`/browsejobs/${job.id}`}
-                        className="bg-blue-600 text-white px-6 py-3 rounded-md text-lg font-medium hover:bg-blue-700 transition-colors duration-300"
+                        className="bg-neutral-700 text-white p-2 px-6 py-3 rounded-md text-lg font-medium hover:bg-neutral-800 transition-colors duration-300"
                     >
                         View Details →
                     </Link>

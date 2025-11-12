@@ -14,3 +14,8 @@ export async function HandleSignOut() {
         redirectTo: '/'
     })
 }
+
+
+export async function handlePostJob(prevState, formData) {
+    console.log(formData)
+}

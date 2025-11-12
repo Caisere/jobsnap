@@ -17,7 +17,7 @@ export default function Home() {
                 </p>
                 <Link
                     href="/browsejobs"
-                    className="bg-blue-600 text-white px-6 py-3 rounded-md text-lg font-medium hover:bg-blue-700 transition-colors duration-300"
+                    className="bg-neutral-700 text-white p-2 px-6 py-3 rounded-md text-lg font-medium hover:bg-neutral-800 transition-colors duration-300"
                 >
                     Browse Jobs
                 </Link>

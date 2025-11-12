@@ -1,4 +1,5 @@
 import { findJobs} from "@/lib/data-services";
+import { currencyUSFormat } from "@/lib/helper";
 import Link from "next/link";
 
 async function BrowseJobsPage({searchParams}:{searchParams: Promise<{[key: string]: string | string[] | undefined}>}){
@@ -16,40 +17,43 @@ async function BrowseJobsPage({searchParams}:{searchParams: Promise<{[key: strin
     return (
         <div className="space-y-8">
             <div className="bg-white p-6 rounded-lg shadow-sm">
-                <h1 className="text-2xl font-bold text-gray-900 mb-6">Find Jobs</h1>
-                <form className="grid gap-4 md:grid-cols-3">
-                    <input
-                        type="text"
-                        name="q"
-                        placeholder="Search jobs..."
-                        className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-gray-900"
-                    />
-                    <select
-                        name="type"
-                        className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-gray-900"
-                    >
-                        <option value="">All Types</option>
-                        <option value="full-time">Full-time</option>
-                        <option value="part-time">Part-time</option>
-                        <option value="Contract">Contract</option>
-                        <option value="Internship">Internship</option>
-                    </select>
-                    <input
-                        type="text"
-                        name="location"
-                        placeholder="Location"
-                        className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-gray-900"
-                    />
-                    <button
-                        type="submit"
-                        className="md:col-span-3 bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700"
-                    >
-                        Search
-                    </button>
-                </form>
+                <div className="max-w-7xl mx-auto w-full pb-4">
+
+                    <h1 className="text-2xl font-bold text-gray-900 mb-6">Find Jobs</h1>
+                    <form className="grid gap-4 md:grid-cols-3">
+                        <input
+                            type="text"
+                            name="q"
+                            placeholder="Search jobs..."
+                            className="text-lg font-medium transition-colors duration-300 border border-gray-300 rounded-md px-4 py-2 focus:border-none focus:outline-none focus:ring-2 focus:ring-neutral-500 text-gray-900"
+                        />
+                        <select
+                            name="type"
+                            className="text-lg font-medium transition-colors duration-300 border border-gray-300 rounded-md px-4 py-2 focus:border-none focus:outline-none focus:ring-2 focus:ring-neutral-500 text-gray-900"
+                        >
+                            <option value="">All Types</option>
+                            <option value="full-time">Full-time</option>
+                            <option value="part-time">Part-time</option>
+                            <option value="Contract">Contract</option>
+                            <option value="Internship">Internship</option>
+                        </select>
+                        <input
+                            type="text"
+                            name="location"
+                            placeholder="Location"
+                            className="text-lg font-medium transition-colors duration-300 border border-gray-300 rounded-md px-4 py-2 focus:border-none focus:outline-none focus:ring-2 focus:ring-neutral-500 text-gray-900"
+                        />
+                        <button
+                            type="submit"
+                            className="bg-neutral-700 text-white p-2 px-6 py-3 rounded-md text-lg font-medium hover:bg-neutral-800 transition-colors duration-300"
+                        >
+                            Search
+                        </button>
+                    </form>
+                </div>
             </div>
         
-            <div className="grid gap-6">
+            <div className="grid gap-6 max-w-7xl mx-auto w-full pb-4">
                 {jobs.map((job) => (
                     <div
                         key={job.id}
@@ -69,7 +73,7 @@ async function BrowseJobsPage({searchParams}:{searchParams: Promise<{[key: strin
                             </div>
                             {job?.salary && (
                                 <span className="text-lg font-semibold text-gray-900">
-                                    {job.salary}
+                                    {currencyUSFormat(Number(job.salary))}
                                 </span>
                             )}
                         </div>

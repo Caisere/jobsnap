@@ -1,6 +1,8 @@
 import { unstable_cache } from "next/cache";
 import prisma from "./prisma";
 import { FindJobs } from "@/app/types";
+import { auth } from "./auth";
+
 
 export const getRecentJobs = unstable_cache(
     async () => {
@@ -86,3 +88,20 @@ export const findJob = unstable_cache(async ({jobId}: {jobId: string}) => {
     return job
 })
 
+
+
+
+// export const userApplications = unstable_cache(async () =>  {
+//     const session = await auth()
+
+//     const applications = await prisma.application.findMany({
+//         where: {
+//             userId: session?.user?.id
+//         },
+//         include: {
+//             job: true
+//         }
+//     })
+
+//     return applications
+// })

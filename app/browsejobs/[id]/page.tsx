@@ -4,6 +4,7 @@ import {formatDistanceToNow} from 'date-fns'
 import { ApplyButton } from "@/components/apply-button";
 import { auth } from "@/lib/auth";
 import { LogIn } from "lucide-react";
+import { currencyUSFormat } from "@/lib/helper";
 
 async function Job ({params}: {params: Promise<{id: string}>}) {
     const jobId = (await params).id
@@ -30,7 +31,7 @@ async function Job ({params}: {params: Promise<{id: string}>}) {
                         {job?.salary && (
                             <>
                                 <span>•</span>
-                                <span className="text-gray-900 font-medium">${job?.salary}</span>
+                                <span className="text-gray-900 font-medium">{currencyUSFormat(Number(job?.salary))}</span>
                             </>
                         )}
                     </div>
