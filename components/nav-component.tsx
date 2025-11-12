@@ -11,6 +11,7 @@ function NavComponent() {
     return (
         <>
             <nav className="flex items-center justify-end flex-1 gap-4">
+                <Link className="text-stone-900" href='/about'>About</Link>
                 <Link className="text-stone-900" href='/browsejobs'>Browse Jobs</Link>
                 { session?.user && 
                     <div className="flex items-center gap-4">
