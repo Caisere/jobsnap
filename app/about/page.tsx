@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-stone-50 py-20">
-      <div className="max-w-4xl mx-auto px-6 md:px-8">
+    <div className="min-h-screen mx-auto bg-stone-50 pt-20">
+      <div className="mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold text-stone-900 mb-4">About JobSnap</h1>
@@ -13,8 +13,8 @@ export default function AboutPage() {
         </div>
 
         {/* Vision Section */}
-        <section className="mb-16">
-          <div className="bg-white rounded-lg shadow-sm p-8 border border-stone-200">
+        <section className="mb-16 px-8">
+          <div className="">
             <h2 className="text-3xl font-bold text-stone-900 mb-4">Our Vision</h2>
             <p className="text-lg text-stone-700 leading-relaxed">
               To revolutionize the job market by creating a seamless, intuitive platform 
@@ -27,8 +27,8 @@ export default function AboutPage() {
         </section>
 
         {/* Mission Section */}
-        <section className="mb-16">
-          <div className="bg-white rounded-lg shadow-sm p-8 border border-stone-200">
+        <section className="mb-16 px-8">
+          <div className="">
             <h2 className="text-3xl font-bold text-stone-900 mb-4">Our Mission</h2>
             <p className="text-lg text-stone-700 leading-relaxed mb-6">
               At JobSnap, our mission is to simplify and accelerate the job search and 
@@ -71,8 +71,8 @@ export default function AboutPage() {
         </section>
 
         {/* Company Story */}
-        <section className="mb-16">
-          <div className="bg-white rounded-lg shadow-sm p-8 border border-stone-200">
+        <section className="mb-16 px-8">
+          <div className="">
             <h2 className="text-3xl font-bold text-stone-900 mb-4">Who We Are</h2>
             <p className="text-lg text-stone-700 leading-relaxed mb-4">
               JobSnap was founded with a simple yet powerful belief: finding the right job 
@@ -90,7 +90,7 @@ export default function AboutPage() {
         </section>
 
         {/* Legal Links */}
-        <section className="mb-16">
+        <section className="">
           <div className="bg-stone-100 rounded-lg p-8 border border-stone-200">
             <h2 className="text-2xl font-bold text-stone-900 mb-6 text-center">
               Legal Information
@@ -114,7 +114,7 @@ export default function AboutPage() {
 
         {/* Contact CTA */}
         <section className="text-center">
-          <div className="bg-neutral-700 text-white rounded-lg p-10">
+          <div className="bg-neutral-700 text-white p-10">
             <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
             <p className="text-lg mb-6 text-stone-200">
               Join thousands of job seekers and employers who trust JobSnap
