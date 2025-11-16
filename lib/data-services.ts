@@ -72,7 +72,10 @@ export const findJobs = unstable_cache(async ({query, searchType, searchLocation
     })
 
     return jobs
-})
+},
+    ["browseJobs"],
+    { revalidate: 60 }
+)
 
 export const findJob = unstable_cache(async ({jobId}: {jobId: string}) => {
     const job = await prisma.job.findUnique({
@@ -85,7 +88,10 @@ export const findJob = unstable_cache(async ({jobId}: {jobId: string}) => {
     })
 
     return job
-})
+},
+    ['job'],
+    {revalidate: 60}
+)
 
 export const existingApplication = unstable_cache(async ({userId, jobId}:{userId:string, jobId:string}) => {
     const appliedJob = await prisma.application.findFirst({

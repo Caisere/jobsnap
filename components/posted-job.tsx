@@ -8,7 +8,7 @@ async function PostedJobs () {
     const session = await auth()
     const postedJobs = await prisma.job.findMany({
         where: {
-            id: session?.user?.id
+            postedById: session?.user?.id
         },
         include: {
             _count: {
