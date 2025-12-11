@@ -15,6 +15,8 @@ import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import type { SignupData } from "@/app/signup/page";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const SignInSchema = z.object({
     email: z.email("Provide a valid email-address"),
@@ -24,6 +26,8 @@ const SignInSchema = z.object({
 type SignInData = Omit<SignupData, 'name'>
 
 function SignInForm() {
+    const router = useRouter();
+
     const form = useForm<SignInData>({
         resolver: zodResolver(SignInSchema),
         defaultValues: {
@@ -32,11 +36,21 @@ function SignInForm() {
         }
     });
 
-    function onSubmit(data:SignInData) {
-        try{
-            const response = fetch('')
-        } catch {
-
+    async function onSubmit(formData:SignInData) {
+        try {
+            const response = await fetch('/api/login', {
+                method: 'POST',
+                body: JSON.stringify(formData)
+            })
+            if (!response.ok) {
+                throw new Error('Failed to sign in')
+            }
+            const responseData = await response.json()
+            toast.success(responseData.message || "Sign in successful");
+            router.push('/dashboard');
+            form.reset();
+        } catch (error) {
+            toast.error((error as Error).message || "Failed to sign in");
         }
     }
 

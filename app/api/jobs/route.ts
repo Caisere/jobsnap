@@ -4,13 +4,15 @@ import { NextResponse } from "next/server";
 
 
 export async function POST (req:Request) {
-
+    // get user session to confirm user is authenticated before accessing this page
     const session = await auth()
 
+    // if no session, navigate to signin page to allow user signin again
     if (!session) {
         return NextResponse.redirect(new URL('/signin', req.url))
     }
 
+    // create new job
     try {
         const data = await req.json();
     

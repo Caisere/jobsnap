@@ -1,6 +1,7 @@
 import { currencyUSFormat } from "@/lib/helper";
 import { formatDistanceToNow } from "date-fns";
-import { Link, LogIn } from "lucide-react";
+import { LogIn } from "lucide-react";
+import Link from 'next/link'
 import { ApplyButton } from "./apply-button";
 import { existingApplication, findJob } from "@/lib/data-services";
 import { auth } from "@/lib/auth";
@@ -63,7 +64,10 @@ async function JobListing({jobId}:{jobId:string}) {
                     ) : (
                         <div className="mt-8 pt-8 border-t border-gray-200 flex items-center justify-between">
                             <p>Login to apply for this Job</p>
-                            <Link className="bg-black text-stone-50 p-2 rounded flex gap-1 items-center" href='/signin'><span>Continue to Login</span> <span><LogIn width={16}/></span></Link>
+                            <Link className="bg-black text-stone-50 p-2 rounded flex gap-1 items-center" href='/signin'>
+                                Continue to Login
+                                <LogIn width={16}/>
+                            </Link>
                         </div>
                     )
                 }
@@ -73,3 +77,4 @@ async function JobListing({jobId}:{jobId:string}) {
 }
 
 export default JobListing
+
