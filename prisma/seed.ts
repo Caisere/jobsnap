@@ -1,7 +1,8 @@
-import { PrismaClient } from "../app/generated/prisma-node/client";
+import {prisma} from '@/lib/prisma'
+
 import { hashPassword } from "../lib/helper";
 
-const prisma = new PrismaClient();
+// const prisma = new PrismaClient();
 
 const userData = [
     {
@@ -77,6 +78,9 @@ const userData = [
 ];
 
 export async function main() {
+
+    await prisma.user.deleteMany();
+
     for (const u of userData) {
         const hashedPassword = await hashPassword(u.password);
         await prisma.user.create({
@@ -88,7 +92,10 @@ export async function main() {
                 password: hashedPassword,
             },
         });
+        console.log(`Creating data for user with ${u.email} address`)
     }
+
+    console.log("All Users created successfully")
 }
 
 main()

@@ -1,105 +1,116 @@
 import { unstable_cache } from "next/cache";
-import prisma from "./prisma";
 import { FindJobs } from "@/app/types";
+import {prisma} from '@/lib/prisma'
 
 
 export const getRecentJobs = unstable_cache(
-    async () => {
-        const recentJobs = await prisma.job.findMany({
-            take: 6,
-            orderBy: {
-                postedAt: "desc",
-            },
-            include: {
-                postedBy: {
-                    select: {
-                        name: true,
-                    },
-                },
-            },
-        });
+  async () => {
+    const recentJobs = await prisma.job.findMany({
+      take: 6,
+      orderBy: {
+        postedAt: "desc",
+      },
+      include: {
+        postedBy: {
+          select: {
+            name: true,
+          },
+        },
+      },
+    });
 
-        return recentJobs;
-    },
-    ["recent-jobs"],
-    { revalidate: 60 }
+    return recentJobs;
+  },
+  ["recent-jobs"],
+  { revalidate: 60 }
 );
 
 export const getJobs = unstable_cache(
-    async () => {
-        const recentJobs = await prisma.job.findMany({
-            orderBy: {
-                postedAt: "desc",
-            },
-            include: {
-                postedBy: {
-                    select: {
-                        name: true,
-                    },
-                },
-            },
-        });
+  async () => {
+    const recentJobs = await prisma.job.findMany({
+      orderBy: {
+        postedAt: "desc",
+      },
+      include: {
+        postedBy: {
+          select: {
+            name: true,
+          },
+        },
+      },
+    });
 
-        return recentJobs;
-    },
-    ["jobs"],
-    { revalidate: 60 }
+    return recentJobs;
+  },
+  ["jobs"],
+  { revalidate: 60 }
 );
 
-export const findJobs = async ({query, searchType, searchLocation}:FindJobs) => {
-    const jobs = await prisma.job.findMany({
-        where: {
-            AND: [
-                query ?
-                    {
-                        OR: [
-                            {title: {contains: query, mode: 'insensitive'}},
-                            {company: {contains: query, mode: 'insensitive'}},
-                            {description: {contains: query, mode: 'insensitive'}}
-                        ]
-                    } : 
-                {},
-                searchType ? {type: searchType } : {},
-                searchLocation ? {location: {contains: searchLocation, mode: 'insensitive'}} : {}
-            ]
-        },
-        orderBy: {
-            postedAt: 'desc'
-        },
-        include: {
-            postedBy: true
-        }
-    })
+export const findJobs = async ({
+  query,
+  searchType,
+  searchLocation,
+}: FindJobs) => {
+  const jobs = await prisma.job.findMany({
+    where: {
+      AND: [
+        query
+          ? {
+              OR: [
+                { title: { contains: query, mode: "insensitive" } },
+                { company: { contains: query, mode: "insensitive" } },
+                { description: { contains: query, mode: "insensitive" } },
+              ],
+            }
+          : {},
+        searchType ? { type: searchType } : {},
+        searchLocation
+          ? { location: { contains: searchLocation, mode: "insensitive" } }
+          : {},
+      ],
+    },
+    orderBy: {
+      postedAt: "desc",
+    },
+    include: {
+      postedBy: true,
+    },
+  });
 
-    return jobs
-}
-    // ["browseJobs"],
-    // { revalidate: 60 }
+  return jobs;
+};
+// ["browseJobs"],
+// { revalidate: 60 }
 // )
 
-export const findJob = unstable_cache(async ({jobId}: {jobId: string}) => {
+export const findJob = unstable_cache(
+  async ({ jobId }: { jobId: string }) => {
     const job = await prisma.job.findUnique({
-        where: {
-            id: jobId
-        },
-        include: {
-            postedBy: true
-        }
-    })
+      where: {
+        id: jobId,
+      },
+      include: {
+        postedBy: true,
+      },
+    });
 
-    return job
-},
-    ['job'],
-    {revalidate: 60}
-)
+    return job;
+  },
+  ["job"],
+  { revalidate: 60 }
+);
 
-export const existingApplication = unstable_cache(async ({userId, jobId}:{userId:string, jobId:string}) => {
+export const existingApplication = unstable_cache(
+  async ({ userId, jobId }: { userId: string; jobId: string }) => {
     const appliedJob = await prisma.application.findFirst({
-        where: {
-            userId: userId,
-            jobId: jobId 
-        }
-    })
+      where: {
+        userId: userId,
+        jobId: jobId,
+      },
+    });
 
-    return appliedJob
-},['appliedJob'],{revalidate: 60})
+    return appliedJob;
+  },
+  ["appliedJob"],
+  { revalidate: 60 }
+);
