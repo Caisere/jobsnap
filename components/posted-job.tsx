@@ -2,11 +2,11 @@ import { auth } from "@/lib/auth";
 import { formatDistanceToNow } from "date-fns";
 import { Link } from "lucide-react";
 import {prisma} from '@/lib/prisma'
-import { JobFull } from "@/app/types";
+import { Job } from "@/app/types";
 
 async function PostedJobs() {
   const session = await auth();
-  const postedJobs: JobFull[] = await prisma.job.findMany({
+  const postedJobs: Job[] = await prisma.job.findMany({
     where: {
       postedById: session?.user?.id,
     },

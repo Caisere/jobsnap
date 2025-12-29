@@ -11,7 +11,7 @@ const PostJobSchema = z.object({
     title: z.string('Title is required'),
     company: z.string('Company is required'),
     location: z.string('Location is required'),
-    type: z.string('Job Type is required'),
+    type: z.enum(["PART_TIME", "FULL_TIME"]),
     description: z.string('Job description is required'),
     salary: z.string(),
 })
@@ -101,10 +101,10 @@ function PostJobForm() {
                     className="mt-1 block w-full border border-gray-300 rounded-md px-4 py-2 focus:border-none focus:outline-none focus:ring-2 focus:ring-neutral-500 text-gray-900"
                 >
                     <option value="">Select a type</option>
-                    <option value="Full-time">Full-time</option>
-                    <option value="Part-time">Part-time</option>
-                    <option value="Contract">Contract</option>
-                    <option value="Internship">Internship</option>
+                    <option value="FULL-TIME">Full-time</option>
+                    <option value="PART-TIME">Part-time</option>
+                    {/* <option value="Contract">Contract</option>
+                    <option value="Internship">Internship</option> */}
                 </select>
                 {errors?.type && <p className="text-red-400 text-sm">{errors?.type?.message}</p>}
             </div>

@@ -7,8 +7,8 @@
 generator client {
   provider = "prisma-client"
   output   = "../generated/prisma"
-  importFileExtension = ".ts"
-  reExportFileExtension = ".ts"
+  importFileExtension = ""
+  reExportFileExtension = ""
 //   engineType = "library"
 }
 
@@ -76,12 +76,17 @@ model VerificationToken {
     @@map("verification_tokens")
 }
 
+enum JobType {
+    PART_TIME
+    FULL_TIME
+}
+
 model Job {
     id String @id @default(cuid())
     title String
     company String
     location String
-    type String //parttime or fulltime
+    type JobType
     description String @db.Text
     salary  String?
     
@@ -93,11 +98,19 @@ model Job {
     application Application[]
 }
 
+enum Status {
+    PENDING
+    REVIEWING
+    ACCEPTED
+    REJECTED
+}
+
+
 model Application {
     id String @id @default(cuid())
     jobId String
     userId String
-    status String @default("PENDING") // REVIEWING, ACCEPTED REJECTED
+    status Status @default(PENDING) // REVIEWING, ACCEPTED REJECTED
     appliedAT DateTime @default(now())
 
     user User @relation(fields: [userId], references: [id])

@@ -1,4 +1,5 @@
 import { JobFull } from "@/app/types";
+import { JobType } from "@/generated/prisma/enums";
 import { findJobs } from "@/lib/data-services"
 import { currencyUSFormat } from "@/lib/helper";
 import Link from "next/link";
@@ -13,7 +14,7 @@ async function BrowseJobsListing ({searchParams}: BrowseJobsListingProps) {
     const {q, type, location} = await searchParams;
 
     const query = q as string | undefined;
-    const searchType = type as string | undefined;
+    const searchType = type as JobType;
     const searchLocation = location as string | undefined
 
     const jobs: JobFull[] = await findJobs({query, searchType, searchLocation})

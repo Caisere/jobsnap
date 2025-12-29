@@ -18,6 +18,7 @@ async function Application() {
     },
     include: {
       job: true,
+      user: true
     },
   });
 
@@ -46,7 +47,7 @@ async function Application() {
                     <span className="mx-2">•</span>
                     <span>
                       Applied{" "}
-                      {formatDistanceToNow(new Date(application.appliedAt), {
+                      {formatDistanceToNow(new Date(application.appliedAT), {
                         addSuffix: true,
                       })}
                     </span>

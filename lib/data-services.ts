@@ -1,6 +1,7 @@
 import { unstable_cache } from "next/cache";
 import { FindJobs } from "@/app/types";
 import {prisma} from '@/lib/prisma'
+import { JobType } from "@/generated/prisma/enums";
 
 
 export const getRecentJobs = unstable_cache(
@@ -63,7 +64,7 @@ export const findJobs = async ({
               ],
             }
           : {},
-        searchType ? { type: searchType } : {},
+        searchType ? { type: searchType as JobType } : {},
         searchLocation
           ? { location: { contains: searchLocation, mode: "insensitive" } }
           : {},
@@ -74,6 +75,7 @@ export const findJobs = async ({
     },
     include: {
       postedBy: true,
+      application: true
     },
   });
 

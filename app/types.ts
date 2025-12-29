@@ -44,7 +44,7 @@ export type JobApplication = {
     jobId: string;
     userId: string;
     status: "PENDING" | "REVIEWING" | "ACCEPTED" | "REJECTED";
-    appliedAt: Date;
+    appliedAT: Date;
 };
 
 export type User = {
@@ -81,6 +81,9 @@ export type Job = {
     postedById: string;
 };
 
+export type JobType = "PART_TIME" | "FULL_TIME"
+
+
 export type ApplicationFull = JobApplication & {
     user: User;
     job: Job;
@@ -95,5 +98,5 @@ export type UserFull = User & {
 
 export type JobFull = Job & {
     postedBy: User;
-    applications: JobApplication[];
+    application: JobApplication[];
 };
