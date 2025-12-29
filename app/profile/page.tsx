@@ -1,8 +1,9 @@
 import UsersPage from "@/components/users-pages"
 import { Suspense } from "react"
 
-async function UserProfile() {
 
+
+function Profile() {
     return (
         <div>
             <Suspense fallback={<p>Loading...</p>}>
@@ -12,4 +13,4 @@ async function UserProfile() {
     )
 }
 
-export default UserProfile
+export default Profile

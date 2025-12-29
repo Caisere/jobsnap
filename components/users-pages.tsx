@@ -1,12 +1,21 @@
-import {prisma} from '@/lib/prisma'
+// 'use cache'
 
+import { User } from '@/app/types';
+import {prisma} from '@/lib/prisma'
+import { connection } from 'next/server';
+
+async function getUsers() {
+    await connection();
+    return prisma.user.findMany();
+}
 
 async function UsersPage() {
-  const users = await prisma.user.findMany();
-  // console.log(users)
+
+  const users: User[] = await getUsers()
 
   return (
     <div>
+        Users
       {users?.map((user) => (
         <div key={user.id}>
           <h1>{user.name}</h1>

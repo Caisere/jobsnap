@@ -2,10 +2,11 @@ import { auth } from "@/lib/auth";
 import { formatDistanceToNow } from "date-fns";
 import { Link } from "lucide-react";
 import {prisma} from '@/lib/prisma'
+import { JobFull } from "@/app/types";
 
 async function PostedJobs() {
   const session = await auth();
-  const postedJobs = await prisma.job.findMany({
+  const postedJobs: JobFull[] = await prisma.job.findMany({
     where: {
       postedById: session?.user?.id,
     },
@@ -50,7 +51,7 @@ async function PostedJobs() {
               </div>
               <div className="text-right">
                 <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800">
-                  {job._count.application} applications
+                  {/* {job._count.application} applications */}
                 </span>
               </div>
             </div>

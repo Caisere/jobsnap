@@ -1,12 +1,15 @@
+import { ApplicationFull } from "@/app/types";
 import { auth } from "@/lib/auth";
 import {prisma} from '@/lib/prisma'
 import { formatDistanceToNow } from "date-fns";
 import Link from "next/link";
 
+
+
 async function Application() {
   const sesssion = await auth();
 
-  const applications = await prisma.application.findMany({
+  const applications:ApplicationFull[] = await prisma.application.findMany({
     where: {
       userId: sesssion?.user?.id,
     },
@@ -43,7 +46,7 @@ async function Application() {
                     <span className="mx-2">•</span>
                     <span>
                       Applied{" "}
-                      {formatDistanceToNow(new Date(application.appliedAT), {
+                      {formatDistanceToNow(new Date(application.appliedAt), {
                         addSuffix: true,
                       })}
                     </span>

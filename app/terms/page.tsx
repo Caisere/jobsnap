@@ -15,9 +15,9 @@ export default function TermsPage() {
 
         <div className="bg-white rounded-lg shadow-sm p-8 md:p-12 border border-stone-200">
           <h1 className="text-4xl font-bold text-stone-900 mb-4">Terms & Conditions</h1>
-          <p className="text-stone-600 mb-8">
+          {/* <p className="text-stone-600 mb-8">
             Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-          </p>
+          </p> */}
 
           <div className="space-y-8 text-stone-700">
             <section>

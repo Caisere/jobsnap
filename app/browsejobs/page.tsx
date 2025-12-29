@@ -5,13 +5,6 @@ import { Suspense } from "react";
 
 async function BrowseJobsPage({searchParams}:{searchParams: Promise<{[key: string]: string | string[] | undefined}>}){
 
-    const {q, type, location} = await searchParams;
-
-    const query = q as string | undefined;
-    const searchType = type as string | undefined;
-    const searchLocation = location as string | undefined
-
-
     return (
         <div className="space-y-8 mt-16">
             <div className="bg-white p-6 rounded-lg shadow-sm">
@@ -53,7 +46,7 @@ async function BrowseJobsPage({searchParams}:{searchParams: Promise<{[key: strin
         
             <div className="grid gap-6 max-w-7xl mx-auto w-full pb-4">
                 <Suspense fallback={<p>Loading Jobs...</p>}>
-                    <BrowseJobsListing query={query} searchType={searchType} searchLocation={searchLocation} />
+                    <BrowseJobsListing searchParams={searchParams}/>
                 </Suspense>
             </div>
         </div>

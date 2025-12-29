@@ -1,17 +1,22 @@
+import { JobFull } from "@/app/types";
 import { findJobs } from "@/lib/data-services"
 import { currencyUSFormat } from "@/lib/helper";
 import Link from "next/link";
 
 
 type BrowseJobsListingProps = {
-    query: string | undefined,
-    searchType: string | undefined,
-    searchLocation: string | undefined,
+    searchParams: Promise<{[key: string]: string | string[] | undefined}>
 }
 
-async function BrowseJobsListing ({query, searchType, searchLocation}: BrowseJobsListingProps) {
+async function BrowseJobsListing ({searchParams}: BrowseJobsListingProps) {
 
-    const jobs = await findJobs({query, searchType, searchLocation})
+    const {q, type, location} = await searchParams;
+
+    const query = q as string | undefined;
+    const searchType = type as string | undefined;
+    const searchLocation = location as string | undefined
+
+    const jobs: JobFull[] = await findJobs({query, searchType, searchLocation})
 
     return (
         <>

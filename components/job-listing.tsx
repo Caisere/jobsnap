@@ -6,7 +6,10 @@ import { ApplyButton } from "./apply-button";
 import { existingApplication, findJob } from "@/lib/data-services";
 import { auth } from "@/lib/auth";
 
-async function JobListing({jobId}:{jobId:string}) {
+
+async function JobListing({params}: {params: Promise<{id: string}>}) {
+
+    const jobId = (await params).id
 
     const session = await auth()
     const userId= session?.user?.id as string

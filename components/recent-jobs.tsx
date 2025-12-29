@@ -1,9 +1,10 @@
 
+import { Job } from "@/app/types"
 import { getRecentJobs } from "@/lib/data-services"
 import Link from "next/link"
 
 async function RecentJobs () {
-    const recentJobs = await getRecentJobs()
+    const recentJobs = await getRecentJobs() as Job[]
     return (
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {recentJobs?.map((job) => (
