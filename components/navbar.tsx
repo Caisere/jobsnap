@@ -24,11 +24,12 @@ function NavBar() {
 
 
     return (
-        <div className={`flex items-center justify-between py-4 mx-auto fixed top-0 w-full px-20 transition-all duration-300 ease-linear ${
-            isScrolling 
+        <div className={`flex items-center justify-between py-4 mx-auto fixed top-0 w-full px-20 transition-all duration-300 ease-linear 
+            ${ isScrolling 
                 ? 'bg-black left-1/2 top-8 max-w-4xl rounded-full mx-auto -translate-x-1/2 -translate-y-1/2 mt-2 py-2 px-10 z-50' 
                 : 'bg-transparent'
-            }`}
+            }
+            `}
         >
             <div>
                 <Link className="font-bold text-xl text-primary" href='/'>JobSnap</Link>

@@ -10,7 +10,7 @@ function FormButton ({label}:{label: string}) {
     return (
         <Button 
             type="submit"
-            className="w-full bg-neutral-600 mt-4 text-white px-4 py-2 rounded-md hover:bg-neutral-700 disabled:opacity-50 transition-colors duration-300 disabled:cursor-not-allowed"
+            className="bg-neutral-700 text-primary mt-6 px-6 py-3 rounded-md text-lg font-medium hover:bg-neutral-800 transition-colors duration-300"
             disabled={isSubmitting}
         >
             {label} <span>{isSubmitting && <Spinner />}</span>

@@ -3,10 +3,12 @@
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { SignOut } from "./sign-out";
+// import { auth } from "@/lib/auth";
 
 
 function NavComponent() {
     const {data: session} = useSession()
+    // const session = await auth()
 
     return (
         <>

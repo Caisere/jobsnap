@@ -6,8 +6,8 @@ export default function AboutPage() {
       <div className="mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-stone-900 mb-4">About JobSnap</h1>
-          <p className="text-xl text-stone-600">
+          <h1 className="text-5xl font-bold text-primary mb-4">About JobSnap</h1>
+          <p className="text-xl text-primary/80">
             Connecting talent with opportunity, one snap at a time
           </p>
         </div>
@@ -15,8 +15,8 @@ export default function AboutPage() {
         {/* Vision Section */}
         <section className="mb-16 px-8">
           <div className="">
-            <h2 className="text-3xl font-bold text-stone-900 mb-4">Our Vision</h2>
-            <p className="text-lg text-stone-700 leading-relaxed">
+            <h2 className="text-3xl font-bold text-primary mb-4">Our Vision</h2>
+            <p className="text-lg text-primary/70 leading-relaxed">
               To revolutionize the job market by creating a seamless, intuitive platform 
               that empowers job seekers to find their dream careers and enables employers 
               to discover exceptional talent effortlessly. We envision a world where the 
@@ -29,13 +29,13 @@ export default function AboutPage() {
         {/* Mission Section */}
         <section className="mb-16 px-8">
           <div className="">
-            <h2 className="text-3xl font-bold text-stone-900 mb-4">Our Mission</h2>
-            <p className="text-lg text-stone-700 leading-relaxed mb-6">
+            <h2 className="text-3xl font-bold text-primary mb-4">Our Mission</h2>
+            <p className="text-lg text-primary/70 leading-relaxed mb-6">
               At JobSnap, our mission is to simplify and accelerate the job search and 
               recruitment process through cutting-edge technology and user-centric design. 
               We are committed to:
             </p>
-            <ul className="space-y-4 text-lg text-stone-700">
+            <ul className="space-y-4 text-lg text-primary/70">
               <li className="flex items-start">
                 <span className="text-stone-900 font-semibold mr-3">•</span>
                 <span>
@@ -73,14 +73,14 @@ export default function AboutPage() {
         {/* Company Story */}
         <section className="mb-16 px-8">
           <div className="">
-            <h2 className="text-3xl font-bold text-stone-900 mb-4">Who We Are</h2>
-            <p className="text-lg text-stone-700 leading-relaxed mb-4">
+            <h2 className="text-3xl font-bold text-primary mb-4">Who We Are</h2>
+            <p className="text-lg text-primary/70 leading-relaxed mb-4">
               JobSnap was founded with a simple yet powerful belief: finding the right job 
               or the right candidate shouldn&apos;t be complicated. We understand the challenges 
               both job seekers and employers face in today&apos;s fast-paced market, and we&apos;re 
               here to bridge that gap.
             </p>
-            <p className="text-lg text-stone-700 leading-relaxed">
+            <p className="text-lg text-primary/70 leading-relaxed">
               Our team is passionate about creating meaningful connections and making the 
               job search experience as smooth and efficient as possible. Whether you&apos;re 
               looking for your next career move or searching for the perfect addition to 
@@ -92,19 +92,19 @@ export default function AboutPage() {
         {/* Legal Links */}
         <section className="bg-mainBackground">
           <div className="rounded-lg p-8">
-            <h2 className="text-2xl font-bold text-stone-900 mb-6 text-center">
+            <h2 className="text-2xl font-bold text-primary mb-6 text-center">
               Legal Information
             </h2>
             <div className="flex flex-col md:flex-row gap-4 justify-center">
               <Link 
                 href="/privacy" 
-                className="bg-white hover:bg-stone-50 text-stone-900 px-6 py-3 rounded-lg border border-stone-300 transition-colors text-center font-medium"
+                className=" bg-neutral-700 text-primary p-2 rounded-md px-6 py-3 font-medium hover:bg-primary/70 hover:text-white transition-colors"
               >
                 Privacy Policy
               </Link>
               <Link 
                 href="/terms" 
-                className="bg-white hover:bg-stone-50 text-stone-900 px-6 py-3 rounded-lg border border-stone-300 transition-colors text-center font-medium"
+                className=" bg-neutral-700 text-primary p-2 rounded-md px-6 py-3 font-medium hover:bg-primary/70 hover:text-white transition-colors"
               >
                 Terms & Conditions
               </Link>
@@ -115,20 +115,20 @@ export default function AboutPage() {
         {/* Contact CTA */}
         <section className="text-center bg-mainBackground">
           <div className="text-white p-10">
-            <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
-            <p className="text-lg mb-6 text-stone-200">
+            <h2 className="text-3xl font-bold mb-4 text-primary">Ready to Get Started?</h2>
+            <p className="text-lg mb-6 text-primary">
               Join thousands of job seekers and employers who trust JobSnap
             </p>
             <div className="flex gap-4 justify-center">
               <Link 
                 href="/browsejobs" 
-                className="bg-white text-neutral-700 px-6 py-3 rounded-lg font-medium hover:bg-stone-100 transition-colors"
+                className=" bg-neutral-700 text-primary p-2 rounded-md px-6 py-3 font-medium hover:bg-primary/70 hover:text-white transition-colors"
               >
                 Browse Jobs
               </Link>
               <Link 
                 href="/signup" 
-                className="bg-stone-100 text-neutral-700 px-6 py-3 rounded-lg font-medium hover:bg-white transition-colors"
+                className=" bg-neutral-700 text-primary p-2 rounded-md px-6 py-3 font-medium hover:bg-primary/70 hover:text-white transition-colors"
               >
                 Sign Up
               </Link>

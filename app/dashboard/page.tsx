@@ -7,16 +7,16 @@ function Dashboard() {
 
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 mt-16">
-            <h1 className="text-2xl font-bold text-gray-900 mb-8">Dashboard</h1>
+            <h1 className="text-2xl font-bold text-primary mb-8">Dashboard</h1>
     
             <div className="grid gap-8 md:grid-cols-2">
                 {/* Posted Jobs Section */}
                 <div>
                     <div className="flex justify-between items-center mb-6">
-                        <h2 className="text-xl font-semibold text-gray-900">Posted Jobs</h2>
+                        <h2 className="text-xl font-semibold text-primary">Posted Jobs</h2>
                         <Link
                             href="/postjob"
-                            className="text-indigo-600 hover:text-indigo-700 font-medium"
+                            className="text-primary/60 hover:text-primary font-medium transition-all duration-300"
                         >
                             Post New Job
                         </Link>
@@ -31,7 +31,7 @@ function Dashboard() {
         
                 {/* Applications Section */}
                 <div>
-                    <h2 className="text-xl font-semibold text-gray-900 mb-6">
+                    <h2 className="text-xl font-semibold text-primary mb-6">
                         Your Applications
                     </h2>
                     <Suspense fallback={<p>Loading Application...</p>}>
