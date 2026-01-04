@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
   const { email, password } = await request.json();
 
   // check if user exists
-  const user = await prisma.user.findUnique({
+  const user = await prisma.users.findUnique({
     where: { email: email },
   });
 

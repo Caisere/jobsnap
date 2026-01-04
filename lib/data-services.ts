@@ -1,7 +1,6 @@
 import { unstable_cache } from "next/cache";
-import { FindJobs } from "@/app/types";
+import { FindJobs, JobType } from "@/app/types";
 import {prisma} from '@/lib/prisma'
-import { JobType } from "@/generated/prisma/enums";
 
 
 export const getRecentJobs = unstable_cache(

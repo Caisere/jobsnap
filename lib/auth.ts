@@ -20,9 +20,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        // TODO: Re-implement user lookup after Prisma re-initialization
         const { email} = credentials as { email: string};
-        const user = await prisma.user.findUnique({
+        const user = await prisma.users.findUnique({
             where: { email: email },
         });
         return user;

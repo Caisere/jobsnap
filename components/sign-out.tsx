@@ -10,7 +10,7 @@ export function SignOut() {
                 HandleSignOut}
             className="w-full"
         >
-            <button className="bg-neutral-700 text-white p-2 rounded-md">
+            <button className="bg-neutral-700 text-primary p-2 rounded-md">
                 Sign Out
             </button>
         </form>

@@ -5,33 +5,39 @@ import { hashPassword } from "@/lib/helper";
 import {prisma} from '@/lib/prisma'
 
 export async function POST(req: NextRequest) {
-  const { email, password, name } = await req.json();
+    try {
+        const { email, password, name } = await req.json();
 
-  // check if user already exist in the database
-  const existingUser = await prisma.user.findUnique({
-    where: { email: email },
-  });
+        console.log(email, password, name)
 
-  // if user with the same already exist, return error message, user already exit
-  if (existingUser) {
-    return Response.json({ error: "User already exists" }, { status: 400 });
-  }
+        // check if user already exist in the database
+        const existingUser = await prisma.users.findUnique({
+            where: { email: email },
+        });
 
-  // if no existing user
-  // hash password
-  const hashedPassword = await hashPassword(password);
+        // if user with the same already exist, return error message, user already exit
+        if (existingUser) {
+            return Response.json({ error: "User already exists" }, { status: 400 });
+        }
 
-  // create a new user with the provided information
-  await prisma.user.create({
-    data: {
-      email,
-      name,
-      password: hashedPassword,
-    },
-  });
+        // if no existing user
+        // hash password
+        const hashedPassword = await hashPassword(password);
 
-  // return success message
-  return Response.json({
-    success: "User Successfuly Created",
-  });
+        // create a new user with the provided information
+        await prisma.users.create({
+            data: {
+                email,
+                name,
+                password: hashedPassword,
+            },
+        });
+
+        // return success message
+        return Response.json({
+            success: "User Successfuly Created",
+        });
+    } catch(err) {
+        console.log(err)
+    }
 }

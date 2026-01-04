@@ -10,7 +10,7 @@ function SignInPage() {
                 <SignIn provider="github" />
                 <div className="flex gap-1 items-center text-sm text-stone-400">
                     <p>Don&apos;t have an account yet?</p>
-                    <Link className="hover:underline font-semibold" href='/signup'>Create an Account</Link>
+                    <Link className="hover:underline font-semibold hover:text-primary" href='/signup'>Create an Account</Link>
                 </div>
             </div>
         </div>

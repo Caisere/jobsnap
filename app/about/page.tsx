@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen mx-auto bg-stone-50 pt-20">
+    <div className="min-h-screen mx-auto pt-20 text-primary bg-mainBackground">
       <div className="mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
@@ -90,8 +90,8 @@ export default function AboutPage() {
         </section>
 
         {/* Legal Links */}
-        <section className="">
-          <div className="bg-stone-100 rounded-lg p-8 border border-stone-200">
+        <section className="bg-mainBackground">
+          <div className="rounded-lg p-8">
             <h2 className="text-2xl font-bold text-stone-900 mb-6 text-center">
               Legal Information
             </h2>
@@ -113,8 +113,8 @@ export default function AboutPage() {
         </section>
 
         {/* Contact CTA */}
-        <section className="text-center">
-          <div className="bg-neutral-700 text-white p-10">
+        <section className="text-center bg-mainBackground">
+          <div className="text-white p-10">
             <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
             <p className="text-lg mb-6 text-stone-200">
               Join thousands of job seekers and employers who trust JobSnap

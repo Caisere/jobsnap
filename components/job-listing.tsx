@@ -20,28 +20,28 @@ async function JobListing({params}: {params: Promise<{id: string}>}) {
     ])
     return (
         <>
-            <div className="bg-white rounded-lg shadow-sm p-8 max-w-4xl mx-auto w-full">
+            <div className="bg-white/10 rounded-lg shadow-sm p-8 max-w-4xl mx-auto w-full">
                 <div className="mb-8">
                     <Link
                         href="/browsejobs"
-                        className="text-[#7DA7BA] hover:text-[#7DA7BA]/70 transition-color duration-300 ease-linear font-medium mb-4 inline-block"
+                        className="text-primary/80 hover:text-primary/70 transition-color duration-300 ease-linear font-medium mb-4 inline-block"
                     >
                         ← Back to Jobs
                     </Link>
-                    <h1 className="text-3xl font-bold text-gray-900 mb-2">{job?.title}</h1>
-                    <p className="text-xl text-gray-600 mb-4">{job?.company}</p>
-                    <div className="flex items-center gap-4 text-gray-500 mb-6">
+                    <h1 className="text-3xl font-bold text-primary mb-2">{job?.title}</h1>
+                    <p className="text-xl text-white/70 mb-4">{job?.company}</p>
+                    <div className="flex items-center gap-4 text-primary mb-6">
                         <span>{job?.location}</span>
                         <span>•</span>
                         <span>{job?.type.toUpperCase()}</span>
                         {job?.salary && (
                             <>
                                 <span>•</span>
-                                <span className="text-gray-900 font-medium">{currencyUSFormat(Number(job?.salary))}</span>
+                                <span className="text-primary font-medium">{currencyUSFormat(Number(job?.salary))}</span>
                             </>
                         )}
                     </div>
-                    <div className="flex items-center text-sm text-gray-500">
+                    <div className="flex items-center text-sm text-white/70">
                         <span>Posted by {job?.postedBy.name}</span>
                         <span className="mx-2">•</span>
                         <span>
@@ -51,10 +51,10 @@ async function JobListing({params}: {params: Promise<{id: string}>}) {
                 </div>
         
                 <div className="prose max-w-none">
-                    <h2 className="text-xl font-semibold text-gray-900 mb-4">
+                    <h2 className="text-xl font-semibold text-primary mb-4">
                         Job Description
                     </h2>
-                    <div className="text-gray-600 whitespace-pre-wrap">
+                    <div className="text-white/60 whitespace-pre-wrap">
                         {job?.description}
                     </div>
                 </div>

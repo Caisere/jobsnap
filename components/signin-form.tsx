@@ -12,15 +12,16 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useForm } from "react-hook-form";
+import { useForm} from "react-hook-form";
 import { z } from "zod";
 import type { SignupData } from "@/app/signup/page";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { Spinner } from "./ui/spinner";
 
 const SignInSchema = z.object({
     email: z.email("Provide a valid email-address"),
-    password: z.string("Password is required"),
+    password: z.string().min(1, "Password is required"),
 });
 
 type SignInData = Omit<SignupData, 'name'>
@@ -32,7 +33,7 @@ function SignInForm() {
         resolver: zodResolver(SignInSchema),
         defaultValues: {
             email: '',
-            password: ''
+            password: '',
         }
     });
 
@@ -55,9 +56,10 @@ function SignInForm() {
     }
 
     return (
-        <div className="w-full">
+        <div className="w-full flex flex-col justify-center items-center">
+            <h1 className="mb-10 text-4xl font-bold">Sign In</h1>
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col mx-auto gap-3 w-[50%]">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col mx-auto gap-5 w-[50%]">
                     <FormField
                         control={form.control}
                         name="email"
@@ -84,7 +86,13 @@ function SignInForm() {
                             </FormItem>
                         )}
                     />
-                    <Button className="bg-neutral-700 text-white p-2 px-6 py-3 rounded-md text-lg font-medium hover:bg-neutral-800 transition-colors duration-300" type="submit">Submit</Button>
+                    <Button 
+                        className="bg-neutral-700 text-white/60 p-2 px-6 py-3 rounded-md text-lg font-medium hover:bg-neutral-800 transition-colors duration-300" 
+                        type="submit"
+                        disabled={form.formState.isSubmitting}
+                    >
+                        {form.formState.isSubmitting ? <Spinner /> : "Submit"}
+                    </Button>
                 </form>
             </Form>
         </div>

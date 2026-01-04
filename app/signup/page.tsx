@@ -15,19 +15,22 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import Link from "next/link";
 import { toast } from "sonner";
+import { Spinner } from "@/components/ui/spinner";
+import { useRouter } from "next/navigation";
 
 
 // sign-up schema
 const SignUpSchema = z.object({
-    name: z.string("Name is required"),
+    name: z.string().min(5, "Full-Name is required"),
     email: z.email("Provide a valid email-address"),
-    password: z.string("Password is required"),
+    password: z.string().min(4, "Password is required"),
 });
 
 // type for the sign-up data
 export type SignupData = z.infer<typeof SignUpSchema>;
 
 function SignUpPage() {
+    const router = useRouter()
     const form = useForm<SignupData>({
         resolver: zodResolver(SignUpSchema),
         defaultValues: {
@@ -54,6 +57,7 @@ function SignUpPage() {
             // if the server returns data, log the data
             const responseData = await response.json();
             toast.success(responseData.message || "Sign up successful");
+            router.push('/signin')
             form.reset();
         } catch (error) {
             toast.error((error as Error).message || "Failed to sign up");
@@ -61,11 +65,12 @@ function SignUpPage() {
     }
 
     return (
-        <div className="">
+        <div className="flex items-center flex-col justify-center h-dvh">
+            <h1 className="mb-10 text-4xl font-bold">Sign Up</h1>
             <Form {...form}>
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}
-                    className="flex flex-col max-w-sm mx-auto justify-center gap-3 h-screen"
+                    className="flex flex-col mx-auto gap-5 w-[25%]"
                 >
                     <FormField
                         control={form.control}
@@ -106,11 +111,17 @@ function SignUpPage() {
                         </FormItem>
                         )}
                     />
-                    <Button type="submit">Submit</Button>
+                    <Button 
+                        className="bg-neutral-700 text-white/60 p-2 px-6 py-3 rounded-md text-lg font-medium hover:bg-neutral-800 transition-colors duration-300" 
+                        type="submit"
+                        disabled={form.formState.isSubmitting}
+                    >
+                        {form.formState.isSubmitting ? <Spinner /> : "Submit"}
+                    </Button>
                 </form>
-                <div className="flex gap-1 items-center text-sm text-stone-400">
+                <div className="flex gap-1 items-center text-sm text-stone-400 mt-4">
                     <p>Already have an account?</p>
-                    <Link className="hover:underline font-semibold" href="/signin">
+                    <Link className="hover:underline hover:text-primary font-semibold" href="/signin">
                         Login
                     </Link>
                 </div>

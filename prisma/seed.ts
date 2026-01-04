@@ -79,11 +79,11 @@ const userData = [
 
 export async function main() {
 
-    await prisma.user.deleteMany();
+    await prisma.users.deleteMany();
 
     for (const u of userData) {
         const hashedPassword = await hashPassword(u.password);
-        await prisma.user.create({
+        await prisma.users.create({
             data: {
                 name: u.name,
                 email: u.email,

@@ -4,8 +4,8 @@
 @custom-variant dark (&:is(.dark *));
 
 body {
-    /* background: #ededed; */
-    color:#0a0a0a;
+    background-color: var(--color-mainBackground);
+    color: var(--color-primary);
 }
 
 @theme inline {
@@ -44,6 +44,9 @@ body {
     --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-ring: var(--sidebar-ring);
+
+    --color-primary: #d4b896;
+    --color-mainBackground: #0d0d0d;
 }
 
 :root {

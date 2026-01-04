@@ -6,7 +6,7 @@ import { connection } from 'next/server';
 
 async function getUsers() {
     await connection();
-    return prisma.user.findMany();
+    return prisma.users.findMany();
 }
 
 async function UsersPage() {
